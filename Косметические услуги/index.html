@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeautyGlow - Салон косметических услуг</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="./assets/css/dark-theme.css"
+      id="theme-style"
+      disabled
+    />
+    <link rel="stylesheet" href="./assets/css/mobile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="./index.html">BeautyGlow</a>
+        </div>
+        <nav class="desktop-nav">
+          <ul>
+            <li><a href="./index.html">Главная</a></li>
+            <li class="dropdown">
+              <a href="./assets/page/catalog.html"
+                >Услуги <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="./assets/page/product.html">Уход за лицом</a></li>
+                <li><a href="./assets/page/product2.html">Массажи</a></li>
+                <li><a href="./assets/page/product3.html">Маникюр/Педикюр</a></li>
+                <li><a href="./assets/page/product4.html">Депиляция</a></li>
+              </ul>
+            </li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#help"> Популярные услуги</a></li>
+            <li><a href="#cont">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="./assets/page/cart.html" class="cart-icon"
+            ><i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span></a
+          >
+          <a href="./assets/page/account.html" class="account-btn"
+            ><i class="fas fa-user"></i
+          ></a>
+          <button class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+          <li><a href="./index.html">Главная</a></li>
+          <li class="dropdown">
+            <a href="./assets/page/catalog.html"
+              >Услуги <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Уход за лицом</a></li>
+              <li><a href="#">Массажи</a></li>
+              <li><a href="#">Маникюр/Педикюр</a></li>
+              <li><a href="#">Депиляция</a></li>
+            </ul>
+          </li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#help"> Популярные услуги</a></li>
+          <li><a href="#cont">Контакты</a></li>
+          <li><a href="./assets/page/account.html">Личный кабинет</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="video-background">
+      <video autoplay muted loop id="bg-video">
+        <source src="video/beauty-saloon.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+      <div class="video-content">
+        <h1>BeautyGlow</h1>
+        <p>Ваша красота - наша страсть</p>
+        <a id="about" href="./assets/page/catalog.html" class="btn"
+          >Наши услуги</a
+        >
+      </div>
+    </div>
+
+    <section class="about-section">
+      <div class="container">
+        <h2>О нашем салоне</h2>
+        <p>
+          BeautyGlow - это современный салон красоты, где работают профессионалы
+          своего дела. Мы предлагаем широкий спектр косметических услуг,
+          использую только качественные материалы и современное оборудование.
+        </p>
+        <p id="help">
+          Наша миссия - помочь каждому клиенту раскрыть свою естественную
+          красоту и почувствовать себя уверенно в любой ситуации.
+        </p>
+      </div>
+    </section>
+
+    <section class="services-slider">
+      <div class="container">
+        <h2 id="cont">Популярные услуги</h2>
+        <div class="slider">
+          <div class="slide">
+            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <h3>Комплексный уход за лицом</h3>
+            <p>От 2500 руб.</p>
+            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/massage.jpg" alt="Массаж" />
+            <h3>Расслабляющий массаж</h3>
+            <p>От 3000 руб.</p>
+            <a href="./assets/page/product.html?id=2" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/manicure.jpg" alt="Маникюр" />
+            <h3>Комплексный маникюр</h3>
+            <p>От 1500 руб.</p>
+            <a href="./assets/page/product.html?id=3" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/hair-removal.jpg" alt="Депиляция" />
+            <h3>Лазерная депиляция</h3>
+            <p>От 3500 руб.</p>
+            <a href="./assets/page/product.html?id=4" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <h3>Комплексный уход за лицом</h3>
+            <p>От 2500 руб.</p>
+            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <h3>Комплексный уход за лицом</h3>
+            <p>От 2500 руб.</p>
+            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+          </div>
+          <div class="slide">
+            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <h3>Комплексный уход за лицом</h3>
+            <p>От 2500 руб.</p>
+            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="prev-slide">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="next-slide">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-modal" id="auth-modal">
+      <div class="auth-container">
+        <button class="close-modal" id="close-auth-modal">&times;</button>
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Вход</button>
+          <button class="tab-btn" data-tab="register">Регистрация</button>
+        </div>
+
+        <div class="tab-content active" id="login">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Пароль</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <button type="submit" class="btn">Войти</button>
+          </form>
+        </div>
+
+        <div class="tab-content" id="register">
+          <form id="register-form">
+            <div class="form-group">
+              <label for="reg-name">Имя</label>
+              <input type="text" id="reg-name" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-email">Email</label>
+              <input type="email" id="reg-email" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-phone">Телефон</label>
+              <input type="tel" id="reg-phone" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-password">Пароль</label>
+              <input type="password" id="reg-password" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-confirm-password">Подтвердите пароль</label>
+              <input type="password" id="reg-confirm-password" required />
+            </div>
+            <button type="submit" class="btn">Зарегистрироваться</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3>BeautyGlow</h3>
+            <p>Салон косметических услуг премиум-класса в вашем городе.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красоты, 15
+            </p>
+            <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+            <p><i class="fas fa-envelope"></i> info@beautyglow.ru</p>
+          </div>
+          <div class="footer-column">
+            <h3>Часы работы</h3>
+            <p>Пн-Пт: 9:00 - 21:00</p>
+            <p>Сб-Вс: 10:00 - 20:00</p>
+          </div>
+          <div class="footer-column">
+            <h3>Подписка</h3>
+            <form class="subscribe-form">
+              <input type="email" placeholder="Ваш email" />
+              <button type="submit" class="btn">Подписаться</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 BeautyGlow. Все права защищены.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script>
+        $(".slider").slick({
+
+          arrows: none,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          scrollbars: none,
+          infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+          ],
+        });
+      </script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог услуг - BeautyGlow</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="../css/dark-theme.css"
+      id="theme-style"
+      disabled
+    />
+    <link 
+    rel="stylesheet" 
+    href="../css/mobile.css" 
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="../../index.html">BeautyGlow</a>
+        </div>
+        <nav class="desktop-nav">
+          <ul>
+            <li><a href="../../index.html">Главная</a></li>
+            <li class="dropdown">
+              <a href="./catalog.html"
+                >Услуги <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Уход за лицом</a></li>
+                <li><a href="#">Массажи</a></li>
+                <li><a href="#">Маникюр/Педикюр</a></li>
+                <li><a href="#">Депиляция</a></li>
+              </ul>
+            </li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#help"> Популярные услуги</a></li>
+            <li><a href="#cont">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="./cart.html" class="cart-icon"
+            ><i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span></a
+          >
+          <a href="./account.html" class="account-btn"
+            ><i class="fas fa-user"></i
+          ></a>
+          <button class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+          <li><a href="../../index.html">Главная</a></li>
+          <li class="dropdown">
+            <a href="./catalog.html"
+              >Услуги <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Уход за лицом</a></li>
+              <li><a href="#">Массажи</a></li>
+              <li><a href="#">Маникюр/Педикюр</a></li>
+              <li><a href="#">Депиляция</a></li>
+            </ul>
+          </li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#help"> Популярные услуги</a></li>
+          <li><a href="#cont">Контакты</a></li>
+          <li><a href="./account.html">Личный кабинет</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="catalog-page">
+      <div class="container">
+        <h1>Наши услуги</h1>
+
+        <div class="catalog-controls">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Поиск услуг..."
+              id="service-search"
+            />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+
+          <div class="filter-sort">
+            <div class="filter">
+              <select id="category-filter">
+                <option value="all">Все категории</option>
+                <option value="face">Уход за лицом</option>
+                <option value="massage">Массажи</option>
+                <option value="nails">Маникюр/Педикюр</option>
+                <option value="hair-removal">Депиляция</option>
+              </select>
+            </div>
+
+            <div class="sort">
+              <select id="price-sort">
+                <option value="default">Сортировка</option>
+                <option value="price-asc">По возрастанию цены</option>
+                <option value="price-desc">По убыванию цены</option>
+                <option value="popular">По популярности</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <div
+            class="service-card"
+            data-category="face"
+            data-price="2500"
+            data-popularity="high"
+          >
+            <img src="images/facial.jpg" alt="Комплексный уход за лицом" />
+            <div class="service-info">
+              <h3>Комплексный уход за лицом</h3>
+              <p class="service-description">
+                Глубокое очищение, увлажнение и питание кожи лица с
+                индивидуальным подходом.
+              </p>
+              <div class="service-meta">
+                <span class="price">2500 руб.</span>
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 60 мин</span
+                >
+              </div>
+              <div class="service-actions">
+                <button class="add-to-cart" data-id="1">В корзину</button>
+                <a href="./product.html?id=1" class="details-btn">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="service-card"
+            data-category="massage"
+            data-price="3000"
+            data-popularity="medium"
+          >
+            <img src="images/massage.jpg" alt="Расслабляющий массаж" />
+            <div class="service-info">
+              <h3>Расслабляющий массаж</h3>
+              <p class="service-description">
+                Снятие напряжения и стресса с помощью профессионального массажа
+                всего тела.
+              </p>
+              <div class="service-meta">
+                <span class="price">3000 руб.</span>
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 90 мин</span
+                >
+              </div>
+              <div class="service-actions">
+                <button class="add-to-cart" data-id="2">В корзину</button>
+                <a href="./product.html?id=2" class="details-btn">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Другие услуги -->
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        <div class="container">
+          <div class="footer-columns">
+            <div class="footer-column">
+              <h3>BeautyGlow</h3>
+              <p>Салон косметических услуг премиум-класса в вашем городе.</p>
+            </div>
+            <div class="footer-column">
+              <h3>Контакты</h3>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красоты, 15
+              </p>
+              <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+              <p><i class="fas fa-envelope"></i> info@beautyglow.ru</p>
+            </div>
+            <div class="footer-column">
+              <h3>Часы работы</h3>
+              <p>Пн-Пт: 9:00 - 21:00</p>
+              <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+            <div class="footer-column">
+              <h3>Подписка</h3>
+              <form class="subscribe-form">
+                <input type="email" placeholder="Ваш email" />
+                <button type="submit" class="btn">Подписаться</button>
+              </form>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 BeautyGlow. Все права защищены.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script src="../js/script.js"></script>
+  </body>
+</html>
