@@ -35,19 +35,24 @@ nav.desktop-nav ul li a:hover,
 }
 
 .dropdown-menu {
-    background-color: #2d2d2d;
+    background-color: #ffffff;
 }
 
 .dropdown-menu li a {
-    color: #e0e0e0;
+    color: #000000;
 }
-
+.mobile-nav ul>li>a{
+    color: #000000;
+}
 .dropdown-menu li a:hover {
     color: #ff6b81;
 }
 
 .theme-toggle {
-    color: #e0e0e0;
+    color: #7c7c7c;
+}
+.account-btn {
+    color: #7c7c7c;
 }
 
 .search-box input,

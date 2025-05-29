@@ -35,6 +35,9 @@
     .burger-menu {
         display: flex;
     }
+    .burger-menu span{
+        background: #fff;
+    }
     
     .video-content h1 {
         font-size: 2.5rem;

@@ -31,34 +31,37 @@
                 >Услуги <i class="fas fa-chevron-down"></i
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Уход за лицом</a></li>
-                <li><a href="#">Массажи</a></li>
-                <li><a href="#">Маникюр/Педикюр</a></li>
-                <li><a href="#">Депиляция</a></li>
+                <li><a href="./product.html">Уход за лицом</a></li>
+                <li><a href="./product2.html">Массажи</a></li>
+                <li><a href="./product3.html">Маникюр/Педикюр</a></li>
+                <li><a href="./product4.html">Депиляция</a></li>
               </ul>
             </li>
-            <li><a href="#about">О нас</a></li>
-            <li><a href="#help"> Популярные услуги</a></li>
-            <li><a href="#cont">Контакты</a></li>
+            <li><a href="../../index.html?#about">О нас</a></li>
+            <li><a href="../../index.html?#help">Популярные услуги</a></li>
+            <li><a href="../../index.html?#cont">Контакты</a></li>
+            <div class="header-actions">
+              <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-star-half" aria-hidden="true"></i>
+              </button>
+              <a href="../page/cart.html" class="cart-icon"
+                ><i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span></a
+              >
+              <div class="account-wrapper">
+                <a href="./account.html" class="account-btn">
+                  <i class="fas fa-user"></i>
+                  <span class="account-name" id="account-name"></span>
+                </a>
+              </div>
+            </div>
           </ul>
         </nav>
-        <div class="header-actions">
-          <button id="theme-toggle" class="theme-toggle">
-            <i class="fas fa-moon"></i>
-          </button>
-          <a href="./cart.html" class="cart-icon"
-            ><i class="fas fa-shopping-cart"></i>
-            <span class="cart-count">0</span></a
-          >
-          <a href="./account.html" class="account-btn"
-            ><i class="fas fa-user"></i
-          ></a>
-          <button class="burger-menu" id="burger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+        <button class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
       <nav class="mobile-nav" id="mobile-nav">
         <ul>
@@ -68,16 +71,31 @@
               >Услуги <i class="fas fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Уход за лицом</a></li>
-              <li><a href="#">Массажи</a></li>
-              <li><a href="#">Маникюр/Педикюр</a></li>
-              <li><a href="#">Депиляция</a></li>
+              <li><a href="./catalog.html">Все услуги</a></li>
+              <li><a href="./product.html">Уход за лицом</a></li>
+              <li><a href="./product2.html">Массажи</a></li>
+              <li><a href="./product3.html">Маникюр/Педикюр</a></li>
+              <li><a href="./product4.html">Депиляция</a></li>
             </ul>
           </li>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#help"> Популярные услуги</a></li>
-          <li><a href="#cont">Контакты</a></li>
-          <li><a href="./account.html">Личный кабинет</a></li>
+          <li><a href="../../index.html?#about">О нас</a></li>
+          <li><a href="../../index.html?#help">Популярные услуги</a></li>
+          <li><a href="../../index.html?#cont">Контакты</a></li>
+          <div class="header-actions">
+            <button id="theme-toggle-mob" class="theme-toggle">
+              <i class="fas fa-star-half" aria-hidden="true"></i>
+            </button>
+            <a href="./cart.html" class="cart-icon"
+              ><i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span></a
+            >
+            <div class="account-wrapper">
+              <a href="./account.html" class="account-btn">
+                <i class="fas fa-user"></i>
+                <span class="account-name" id="account-name"></span>
+              </a>
+            </div>
+          </div>
         </ul>
       </nav>
     </header>
@@ -196,7 +214,7 @@
               </div>
             </div>
           </div>
-          
+
           <div
             class="service-card"
             data-category="hair-removal"
@@ -248,7 +266,7 @@
               </div>
             </div>
           </div>
-          
+
           <div
             class="service-card"
             data-category="massage"
