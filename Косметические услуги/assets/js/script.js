@@ -28,43 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
   // Проверяем сохраненную тему
   if (localStorage.getItem("theme") === "dark") {
     themeStyle.removeAttribute("disabled");
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    themeToggle.innerHTML = '<i class="fa fa-star"></i>';
   }
 
   themeToggle.addEventListener("click", function () {
     if (themeStyle.disabled) {
       themeStyle.removeAttribute("disabled");
       localStorage.setItem("theme", "dark");
-      this.innerHTML = '<i class="fas fa-sun"></i>';
+      this.innerHTML = '<i class="fa fa-star"></i>';
     } else {
       themeStyle.setAttribute("disabled", "true");
       localStorage.setItem("theme", "light");
-      this.innerHTML = '<i class="fas fa-moon"></i>';
+      this.innerHTML = '<i class="fas fas fa-star-half"></i>';
     }
-  });
-
-  // Слайдер услуг
-  const slider = document.querySelector(".slider");
-  const slides = document.querySelectorAll(".slide");
-  const prevBtn = document.querySelector(".prev-slide");
-  const nextBtn = document.querySelector(".next-slide");
-  let currentSlide = 0;
-  const slideWidth = slides[0].clientWidth + 20; // 20 - это margin-right
-
-  function goToSlide(n) {
-    currentSlide = (n + slides.length) % slides.length;
-    slider.scrollTo({
-      left: currentSlide * slideWidth,
-      behavior: "smooth",
-    });
-  }
-
-  prevBtn.addEventListener("click", function () {
-    goToSlide(currentSlide - 1);
-  });
-
-  nextBtn.addEventListener("click", function () {
-    goToSlide(currentSlide + 1);
   });
 
   // Табы на странице товара
@@ -135,59 +111,69 @@ function updateCartCount() {
     el.textContent = totalItems;
   });
 }
+if("accountBtn"){
+  document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("account-btn");
+  const accountDropdown = document.getElementById("account-dropdown");
+  const authModal = document.getElementById("auth-modal");
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Переключение между вкладками авторизации и регистрации
-  const authTabs = document.querySelectorAll(".auth-tabs .tab-btn");
-  const authContents = document.querySelectorAll(".tab-content");
+  // Обработчик клика по кнопке аккаунта
+  
+  accountBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  authTabs.forEach((tab) => {
-    tab.addEventListener("click", function () {
+    if (!currentUser) {
+      // Открываем модальное окно
+      authModal.classList.add("active");
+    } else {
+      // Показываем dropdown
+      accountDropdown.classList.toggle("show");
+    }
+  });
+
+  // Закрытие dropdown при клике вне его
+  if (accountBtn) {
+    document.addEventListener("click", function (e) {
+      if (
+        !accountBtn.contains(e.target) &&
+        !accountDropdown.contains(e.target)
+      ) {
+        accountDropdown.classList.remove("show");
+      }
+    });
+  }
+
+  // Закрытие модального окна
+  if (authModal) {
+    document
+      .getElementById("close-auth-modal")
+      .addEventListener("click", () => {
+        authModal.classList.remove("active");
+      });
+  }
+
+  // Переключение табов
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
       const tabId = this.getAttribute("data-tab");
-
-      // Удаляем активные классы у всех вкладок и контента
-      authTabs.forEach((t) => t.classList.remove("active"));
-      authContents.forEach((c) => c.classList.remove("active"));
-
-      // Добавляем активные классы текущей вкладке и контенту
+      document
+        .querySelectorAll(".tab-btn")
+        .forEach((b) => b.classList.remove("active"));
+      document
+        .querySelectorAll(".tab-content")
+        .forEach((c) => c.classList.remove("active"));
       this.classList.add("active");
       document.getElementById(tabId).classList.add("active");
     });
   });
 
-  // Форма входа
-  const loginForm = document.getElementById("login-form");
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
+  // Регистрация
+  document
+    .getElementById("register-form")
+    .addEventListener("submit", function (e) {
       e.preventDefault();
-
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
-
-      // Здесь должна быть логика авторизации
-      // Для демонстрации просто сохраняем пользователя в localStorage
-      const user = {
-        email,
-        password,
-      };
-
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      alert("Вы успешно вошли в систему!");
-
-      // Закрываем модальное окно
-      document.getElementById("auth-modal").classList.remove("active");
-
-      // Обновляем интерфейс (например, показываем имя пользователя)
-      updateUserUI();
-    });
-  }
-
-  // Форма регистрации
-  const registerForm = document.getElementById("register-form");
-  if (registerForm) {
-    registerForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
       const name = document.getElementById("reg-name").value;
       const email = document.getElementById("reg-email").value;
       const phone = document.getElementById("reg-phone").value;
@@ -196,49 +182,80 @@ document.addEventListener("DOMContentLoaded", function () {
         "reg-confirm-password"
       ).value;
 
-      // Проверка совпадения паролей
       if (password !== confirmPassword) {
         alert("Пароли не совпадают!");
         return;
       }
 
-      // Создаем объект пользователя
-      const user = {
-        name,
-        email,
-        phone,
-        password,
-      };
-
-      // Получаем существующих пользователей или создаем пустой массив
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-
-      // Проверяем, есть ли уже пользователь с таким email
+      let users = JSON.parse(localStorage.getItem("users")) || [];
       if (users.some((u) => u.email === email)) {
-        alert("Пользователь с таким email уже зарегистрирован!");
+        alert("Пользователь с таким email уже существует.");
         return;
       }
 
-      // Добавляем нового пользователя
-      users.push(user);
-
-      // Сохраняем в localStorage
+      const newUser = { name, email, phone, password };
+      users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
-      localStorage.setItem("currentUser", JSON.stringify(user));
+      localStorage.setItem("currentUser", JSON.stringify(newUser));
 
-      alert("Регистрация прошла успешно! Вы вошли в систему.");
-
-      // Закрываем модальное окно
-      document.getElementById("auth-modal").classList.remove("active");
-
-      // Обновляем интерфейс
-      updateUserUI();
+      alert("Регистрация успешна!");
+      window.location.href = "./assets/page/account.html";
     });
+
+  // Авторизация
+  document
+    .getElementById("login-form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        alert("Вы вошли!");
+        window.location.href = "./assets/page/account.html";
+      } else {
+        alert("Неверный email или пароль.");
+      }
+    });
+
+  // Обновление интерфейса
+  function updateUI() {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    const accountNameEl = document.getElementById("account-name");
+    const accountLink = document.getElementById("account-link");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (user) {
+      accountNameEl.textContent = user.name.split(" ")[0];
+      accountLink.style.display = "flex";
+      logoutBtn.style.display = "flex";
+    } else {
+      accountNameEl.textContent = "";
+      accountLink.style.display = "none";
+      logoutBtn.style.display = "none";
+    }
   }
 
-  // Проверяем, авторизован ли пользователь при загрузке страницы
-  checkAuth();
+  // Выход
+  if ("logout-btn") {
+    document.getElementById("logout-btn").addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        updateUI();
+        window.location.href = "./index.html";
+      });
+  }
+
+  updateUI();
 });
+}
+
 
 // Функция для проверки авторизации
 function checkAuth() {
@@ -453,9 +470,9 @@ function displayCartItems() {
   document.querySelector(
     ".summary-row:nth-child(1) span:last-child"
   ).textContent = `${totalPrice} руб.`;
-  document.querySelector(
-    ".summary-row.total span:last-child"
-  ).textContent = `${totalPrice} руб.`;
+  document.querySelector(".summary-row.total span:last-child").textContent = `${
+    totalPrice - 500
+  } руб.`;
 
   // Обработчики для новых кнопок
   document
@@ -508,108 +525,171 @@ function getStatusText(status, date) {
       return `Запланировано на ${formattedDate}`;
   }
 }
-document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация графиков
-    if (document.getElementById('servicesChart')) {
-        const ctx = document.getElementById('servicesChart').getContext('2d');
-        const servicesChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Уход за лицом', 'Массаж', 'Маникюр', 'Депиляция', 'Уход за телом', 'SPA'],
-                datasets: [{
-                    label: 'Популярность услуг',
-                    data: [65, 59, 80, 81, 56, 55],
-                    backgroundColor: [
-                        'rgba(255, 107, 129, 0.7)',
-                        'rgba(165, 94, 234, 0.7)',
-                        'rgba(43, 203, 186, 0.7)',
-                        'rgba(253, 203, 110, 0.7)',
-                        'rgba(75, 123, 236, 0.7)',
-                        'rgba(240, 147, 43, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 107, 129, 1)',
-                        'rgba(165, 94, 234, 1)',
-                        'rgba(43, 203, 186, 1)',
-                        'rgba(253, 203, 110, 1)',
-                        'rgba(75, 123, 236, 1)',
-                        'rgba(240, 147, 43, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-    
-    // Модальное окно добавления услуги
-    const addServiceModal = document.getElementById('add-service-modal');
-    const addServiceBtns = document.querySelectorAll('[href="#add-service"]');
-    const closeModalBtns = document.querySelectorAll('.close-modal');
-    
-    addServiceBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            addServiceModal.classList.add('active');
-        });
+document.addEventListener("DOMContentLoaded", function () {
+  // Инициализация графиков
+  if (document.getElementById("servicesChart")) {
+    const ctx = document.getElementById("servicesChart").getContext("2d");
+    const servicesChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          "Уход за лицом",
+          "Массаж",
+          "Маникюр",
+          "Депиляция",
+          "Уход за телом",
+          "SPA",
+        ],
+        datasets: [
+          {
+            label: "Популярность услуг",
+            data: [65, 59, 80, 81, 56, 55],
+            backgroundColor: [
+              "rgba(255, 107, 129, 0.7)",
+              "rgba(165, 94, 234, 0.7)",
+              "rgba(43, 203, 186, 0.7)",
+              "rgba(253, 203, 110, 0.7)",
+              "rgba(75, 123, 236, 0.7)",
+              "rgba(240, 147, 43, 0.7)",
+            ],
+            borderColor: [
+              "rgba(255, 107, 129, 1)",
+              "rgba(165, 94, 234, 1)",
+              "rgba(43, 203, 186, 1)",
+              "rgba(253, 203, 110, 1)",
+              "rgba(75, 123, 236, 1)",
+              "rgba(240, 147, 43, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
     });
-    
-    closeModalBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.closest('.admin-modal').classList.remove('active');
-        });
+  }
+
+  // Модальное окно добавления услуги
+
+  const addServiceModal = document.getElementById("add-service-modal");
+  const addServiceBtns = document.querySelectorAll('[href="#add-service"]');
+  const closeModalBtns = document.querySelectorAll(".close-modal");
+  if ("add-service-modal") {
+    addServiceBtns.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        addServiceModal.classList.add("active");
+      });
     });
-    
+
+    closeModalBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        this.closest(".admin-modal").classList.remove("active");
+      });
+    });
+
     // Закрытие модального окна при клике вне его
-    window.addEventListener('click', function(e) {
-        if (e.target.classList.contains('admin-modal')) {
-            e.target.classList.remove('active');
-        }
+    window.addEventListener("click", function (e) {
+      if (e.target.classList.contains("admin-modal")) {
+        e.target.classList.remove("active");
+      }
     });
-    
-    // Форма добавления услуги
-    const addServiceForm = document.getElementById('add-service-form');
-    if (addServiceForm) {
-        addServiceForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const serviceName = document.getElementById('service-name').value;
-            const serviceCategory = document.getElementById('service-category').value;
-            const servicePrice = document.getElementById('service-price').value;
-            const serviceDuration = document.getElementById('service-duration').value;
-            const serviceDescription = document.getElementById('service-description').value;
-            
-            // Здесь должна быть логика сохранения услуги (например, отправка на сервер)
-            // Для демонстрации просто выводим данные в консоль
-            console.log({
-                name: serviceName,
-                category: serviceCategory,
-                price: servicePrice,
-                duration: serviceDuration,
-                description: serviceDescription
-            });
-            
-            alert('Услуга успешно добавлена!');
-            addServiceModal.classList.remove('active');
-            this.reset();
-        });
+  }
+
+  // Форма добавления услуги
+  const addServiceForm = document.getElementById("add-service-form");
+  if (addServiceForm) {
+    addServiceForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const serviceName = document.getElementById("service-name").value;
+      const serviceCategory = document.getElementById("service-category").value;
+      const servicePrice = document.getElementById("service-price").value;
+      const serviceDuration = document.getElementById("service-duration").value;
+      const serviceDescription = document.getElementById(
+        "service-description"
+      ).value;
+
+      console.log({
+        name: serviceName,
+        category: serviceCategory,
+        price: servicePrice,
+        duration: serviceDuration,
+        description: serviceDescription,
+      });
+
+      alert("Услуга успешно добавлена!");
+      addServiceModal.classList.remove("active");
+      this.reset();
+    });
+  }
+
+  // Выход из системы
+  const logoutBtn = document.querySelector(".logout");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("currentUser");
+      window.location.href = "index.html";
+    });
+  }
+});
+/////////////////
+/// Сортировка///////////////////////////////////////////////////////////////////////////////////
+/////////////////
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = Array.from(document.querySelectorAll(".service-card"));
+  const searchInput = document.getElementById("service-search");
+  const categoryFilter = document.getElementById("category-filter");
+  const priceSort = document.getElementById("price-sort");
+  const servicesGrid = document.getElementById("services-grid");
+
+  // Функция обновления отображения карточек
+  function updateCards() {
+    // Получаем значения фильтров
+    const query = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const sortType = priceSort.value;
+
+    // Фильтрация
+    let filtered = cards.filter((card) => {
+      const matchesSearch = card
+        .querySelector("h3")
+        .textContent.toLowerCase()
+        .includes(query);
+      const matchesCategory =
+        category === "all" || card.dataset.category === category;
+      return matchesSearch && matchesCategory;
+    });
+
+    // Сортировка
+    if (sortType === "price-asc") {
+      filtered.sort((a, b) => a.dataset.price - b.dataset.price);
+    } else if (sortType === "price-desc") {
+      filtered.sort((a, b) => b.dataset.price - a.dataset.price);
+    } else if (sortType === "popular") {
+      const popularityOrder = { high: 3, medium: 2, low: 1 };
+      filtered.sort(
+        (a, b) =>
+          popularityOrder[b.dataset.popularity] -
+          popularityOrder[a.dataset.popularity]
+      );
     }
-    
-    // Выход из системы
-    const logoutBtn = document.querySelector('.logout');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            localStorage.removeItem('currentUser');
-            window.location.href = 'index.html';
-        });
-    }
+
+    // Очистка и перерисовка
+    servicesGrid.innerHTML = "";
+    filtered.forEach((card) => servicesGrid.appendChild(card));
+  }
+
+  // Обработчики событий
+  searchInput.addEventListener("input", updateCards);
+  categoryFilter.addEventListener("change", updateCards);
+  priceSort.addEventListener("change", updateCards);
 });

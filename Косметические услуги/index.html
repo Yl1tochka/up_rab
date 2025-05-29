@@ -9,6 +9,12 @@
       type="text/css"
       href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link
       rel="stylesheet"
@@ -38,32 +44,38 @@
               <ul class="dropdown-menu">
                 <li><a href="./assets/page/product.html">Уход за лицом</a></li>
                 <li><a href="./assets/page/product2.html">Массажи</a></li>
-                <li><a href="./assets/page/product3.html">Маникюр/Педикюр</a></li>
+                <li>
+                  <a href="./assets/page/product3.html">Маникюр/Педикюр</a>
+                </li>
                 <li><a href="./assets/page/product4.html">Депиляция</a></li>
               </ul>
             </li>
             <li><a href="#about">О нас</a></li>
             <li><a href="#help"> Популярные услуги</a></li>
             <li><a href="#cont">Контакты</a></li>
+            <div class="header-actions">
+              <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-star-half" aria-hidden="true"></i>
+              </button>
+              <a href="./assets/page/cart.html" class="cart-icon"
+                ><i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span></a
+              >
+              <div class="account-wrapper">
+                <button class="account-btn" id="account-btn">
+                  <i class="fas fa-user"></i>
+                  <span class="account-name" id="account-name"></span>
+                </button>
+              </div>
+            </div>
           </ul>
         </nav>
-        <div class="header-actions">
-          <button id="theme-toggle" class="theme-toggle">
-            <i class="fas fa-moon"></i>
-          </button>
-          <a href="./assets/page/cart.html" class="cart-icon"
-            ><i class="fas fa-shopping-cart"></i>
-            <span class="cart-count">0</span></a
-          >
-          <a href="./assets/page/account.html" class="account-btn"
-            ><i class="fas fa-user"></i
-          ></a>
-          <button class="burger-menu" id="burger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+
+        <button class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
       <nav class="mobile-nav" id="mobile-nav">
         <ul>
@@ -73,23 +85,42 @@
               >Услуги <i class="fas fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Уход за лицом</a></li>
-              <li><a href="#">Массажи</a></li>
-              <li><a href="#">Маникюр/Педикюр</a></li>
-              <li><a href="#">Депиляция</a></li>
+              <li><a href="./assets/page/product.html">Уход за лицом</a></li>
+              <li><a href="./assets/page/product2.html">Массажи</a></li>
+              <li>
+                <a href="./assets/page/product3.html">Маникюр/Педикюр</a>
+              </li>
+              <li><a href="./assets/page/product4.html">Депиляция</a></li>
             </ul>
           </li>
           <li><a href="#about">О нас</a></li>
           <li><a href="#help"> Популярные услуги</a></li>
           <li><a href="#cont">Контакты</a></li>
-          <li><a href="./assets/page/account.html">Личный кабинет</a></li>
+          <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle">
+              <i class="fas fa-star-half" aria-hidden="true"></i>
+            </button>
+            <a href="./assets/page/cart.html" class="cart-icon"
+              ><i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span></a
+            >
+            <div class="account-wrapper">
+              <button class="account-btn" id="account-btn">
+                <i class="fas fa-user"></i>
+                <span class="account-name" id="account-name"></span>
+              </button>
+            </div>
+          </div>
         </ul>
       </nav>
     </header>
 
     <div class="video-background">
       <video autoplay muted loop id="bg-video">
-        <source src="video/beauty-saloon.mp4" type="video/mp4" />
+        <source
+          src="./assets/media/Невероятные салоны красоты.mp4"
+          type="video/mp4"
+        />
       </video>
       <div class="video-overlay"></div>
       <div class="video-content">
@@ -121,46 +152,46 @@
         <h2 id="cont">Популярные услуги</h2>
         <div class="slider">
           <div class="slide">
-            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <img src="./assets/media/card_img.jpeg" alt="Уход за лицом" />
             <h3>Комплексный уход за лицом</h3>
             <p>От 2500 руб.</p>
-            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+            <a href="./assets/page/product.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/massage.jpg" alt="Массаж" />
+            <img src="./assets/media/card2.webp" alt="Массаж" />
             <h3>Расслабляющий массаж</h3>
             <p>От 3000 руб.</p>
-            <a href="./assets/page/product.html?id=2" class="btn">Подробнее</a>
+            <a href="./assets/page/product2.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/manicure.jpg" alt="Маникюр" />
+            <img src="./assets/media/card3.webp" alt="Маникюр" />
             <h3>Комплексный маникюр</h3>
             <p>От 1500 руб.</p>
-            <a href="./assets/page/product.html?id=3" class="btn">Подробнее</a>
+            <a href="./assets/page/product3.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/hair-removal.jpg" alt="Депиляция" />
+            <img src="./assets/media/card4.webp" alt="Депиляция" />
             <h3>Лазерная депиляция</h3>
             <p>От 3500 руб.</p>
-            <a href="./assets/page/product.html?id=4" class="btn">Подробнее</a>
+            <a href="./assets/page/product4.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/facial.jpg" alt="Уход за лицом" />
+            <img src="./assets/media/card_img.jpeg" alt="Уход за лицом" />
             <h3>Комплексный уход за лицом</h3>
             <p>От 2500 руб.</p>
-            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+            <a href="./assets/page/product.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/facial.jpg" alt="Уход за лицом" />
-            <h3>Комплексный уход за лицом</h3>
-            <p>От 2500 руб.</p>
-            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+            <img src="./assets/media/card2.webp" alt="Массаж" />
+            <h3>Расслабляющий массаж</h3>
+            <p>От 3000 руб.</p>
+            <a href="./assets/page/product2.html" class="btn">Подробнее</a>
           </div>
           <div class="slide">
-            <img src="images/facial.jpg" alt="Уход за лицом" />
-            <h3>Комплексный уход за лицом</h3>
-            <p>От 2500 руб.</p>
-            <a href="./assets/page/product.html?id=1" class="btn">Подробнее</a>
+            <img src="./assets/media/card3.webp" alt="Маникюр" />
+            <h3>Комплексный маникюр</h3>
+            <p>От 1500 руб.</p>
+            <a href="./assets/page/product3.html" class="btn">Подробнее</a>
           </div>
         </div>
         <div class="slider-controls">
@@ -192,7 +223,9 @@
               <label for="login-password">Пароль</label>
               <input type="password" id="login-password" required />
             </div>
-            <button type="submit" class="btn">Войти</button>
+            <a href="./assets/page/account.html" type="submit" class="btn"
+              >Войти</a
+            >
           </form>
         </div>
 
@@ -218,7 +251,9 @@
               <label for="reg-confirm-password">Подтвердите пароль</label>
               <input type="password" id="reg-confirm-password" required />
             </div>
-            <button type="submit" class="btn">Зарегистрироваться</button>
+            <a href="./assets/page/account.html" type="submit" class="btn"
+              >Зарегистрироваться</a
+            >
           </form>
         </div>
       </div>
@@ -261,37 +296,37 @@
         </div>
       </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js "></script>
     <script
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
-    <script>
-        $(".slider").slick({
 
-          arrows: none,
-          infinite: false,
-          speed: 300,
+    <script>
+      $(document).ready(function () {
+        $(".slider").slick({
           slidesToShow: 3,
           slidesToScroll: 1,
-          scrollbars: none,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          arrows: false,
+          dots: false,
           infinite: true,
           responsive: [
             {
               breakpoint: 1024,
               settings: {
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 1,
                 infinite: true,
                 dots: true,
               },
             },
             {
-              breakpoint: 600,
+              breakpoint: 768,
               settings: {
                 slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
+                slidesToScroll: 1,
               },
             },
             {
@@ -299,12 +334,21 @@
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                infinite: true,
               },
             },
           ],
         });
-      </script>
+
+        // Управление навигацией
+        $(".prev-slide").on("click", function () {
+          $(".slider").slick("slickPrev");
+        });
+
+        $(".next-slide").on("click", function () {
+          $(".slider").slick("slickNext");
+        });
+      });
+    </script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

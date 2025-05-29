@@ -1,3 +1,23 @@
+:root {
+    --primary-color: #ff6b81;
+    --primary-dark: #e84393;
+    --secondary-color: #a55eea;
+    --accent-color: #2bcbba;
+    --text-color: #333;
+    --light-text: #777;
+    --bg-color: #f9f9f9;
+    --white: #fff;
+    --light-gray: #f1f1f1;
+    --medium-gray: #ddd;
+    --dark-gray: #555;
+    --black: #222;
+    --success-color: #26de81;
+    --warning-color: #f7b731;
+    --error-color: #fc5c65;
+    --border-radius: 8px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
 /* Мобильные стили */
 @media (max-width: 992px) {
     .header-container {
@@ -6,6 +26,10 @@
     
     .desktop-nav {
         display: none;
+        color: var(--text-color);
+    }
+    .desktop-nav  ul li a{
+        color: var(--text-color);
     }
     
     .burger-menu {
@@ -84,6 +108,9 @@
     .history-actions {
         flex-direction: row;
         margin-top: 15px;
+    }
+    .cart-summary{
+        padding: 15px;
     }
 }
 
