@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Личный кабинет - BeautyGlow</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="../css/dark-theme.css"
+      id="theme-style"
+      disabled
+    />
+    <link rel="stylesheet" href="../css/mobile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="../../index.html">BeautyGlow</a>
+        </div>
+        <nav class="desktop-nav">
+          <ul>
+            <li><a href="../../index.html">Главная</a></li>
+            <li class="dropdown">
+              <a href="./catalog.html"
+                >Услуги <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="./product.html">Уход за лицом</a></li>
+                <li><a href="./product2.html">Массажи</a></li>
+                <li><a href="./product3.html">Маникюр/Педикюр</a></li>
+                <li><a href="./product4.html">Депиляция</a></li>
+              </ul>
+            </li>
+            <li><a href="../../index.html?#about">О нас</a></li>
+            <li><a href="../../index.html?#help">Популярные услуги</a></li>
+            <li><a href="../../index.html?#cont">Контакты</a></li>
+            <div class="header-actions">
+              <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-star-half" aria-hidden="true"></i>
+              </button>
+              <a href="../page/cart.html" class="cart-icon"
+                ><i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span></a
+              >
+            </div>
+          </ul>
+        </nav>
+        <button class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+          <li><a href="../../index.html">Главная</a></li>
+          <li class="dropdown">
+            <a href="./catalog.html"
+              >Услуги <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="./catalog.html">Все услуги</a></li>
+              <li><a href="./product.html">Уход за лицом</a></li>
+              <li><a href="./product2.html">Массажи</a></li>
+              <li><a href="./product3.html">Маникюр/Педикюр</a></li>
+              <li><a href="./product4.html">Депиляция</a></li>
+            </ul>
+          </li>
+          <li><a href="../../index.html?#about">О нас</a></li>
+          <li><a href="../../index.html?#help">Популярные услуги</a></li>
+          <li><a href="../../index.html?#cont">Контакты</a></li>
+          <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle">
+              <i class="fas fa-star-half" aria-hidden="true"></i>
+            </button>
+            <a href="./cart.html" class="cart-icon"
+              ><i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span></a
+            >
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="account-page">
+      <div class="container">
+        <div class="account-header">
+          <div class="account-greeting">
+            <h1>Добро пожаловать, Анна!</h1>
+            <p>Ваш статус: <span class="status gold">Gold клиент</span></p>
+          </div>
+          <div class="account-avatar">
+            <img src="../media/anna.webp" alt="Анна" />
+            <button class="change-avatar">Изменить фото</button>
+          </div>
+        </div>
+
+        <div class="account-tabs">
+          <button class="tab-btn active" data-tab="profile">Профиль</button>
+          <button class="tab-btn" data-tab="orders">Мои записи</button>
+          <button class="tab-btn" data-tab="history">История посещений</button>
+          <button class="tab-btn" data-tab="favorites">Избранное</button>
+          <button class="tab-btn" data-tab="settings">Настройки</button>
+        </div>
+
+        <div class="account-content">
+          <div class="tab-pane active" id="profile">
+            <form class="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">Имя</label>
+                  <input type="text" id="first-name" value="Анна" />
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Фамилия</label>
+                  <input type="text" id="last-name" value="Иванова" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" value="anna@example.com" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Телефон</label>
+                  <input type="tel" id="phone" value="+7 (123) 456-78-90" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="birthday">Дата рождения</label>
+                <input type="date" id="birthday" value="1990-05-15" />
+              </div>
+
+              <div class="form-group">
+                <label>Пол</label>
+                <div class="radio-group">
+                  <label>
+                    <input type="radio" name="gender" value="female" checked />
+                    Женский
+                  </label>
+                  <label>
+                    <input type="radio" name="gender" value="male" /> Мужской
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">Сохранить изменения</button>
+                <button type="button" class="btn cancel-btn">Отмена</button>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="orders">
+            <h2>Предстоящие записи</h2>
+            <div class="appointments-list">
+              <div class="appointment-card">
+                <div class="appointment-info">
+                  <h3>Комплексный уход за лицом</h3>
+                  <p><i class="far fa-calendar-alt"></i> 15 июня 2023, 14:00</p>
+                  <p><i class="fas fa-user"></i> Специалист: Анна К.</p>
+                  <p><i class="fas fa-clock"></i> 60 минут</p>
+                  <p class="price">2500 руб.</p>
+                </div>
+                <div class="appointment-actions">
+                  <button class="btn">Перенести</button>
+                  <button class="btn cancel-btn">Отменить</button>
+                </div>
+              </div>
+              <!-- Другие записи -->
+            </div>
+          </div>
+
+          <div class="tab-pane" id="history">
+            <h2>История посещений</h2>
+            <div class="history-list">
+              <div class="history-item">
+                <div class="history-info">
+                  <h3>Комплексный уход за лицом</h3>
+                  <p><i class="far fa-calendar-alt"></i> 10 мая 2023, 14:00</p>
+                  <p><i class="fas fa-user"></i> Специалист: Анна К.</p>
+                  <p class="status completed">Завершено</p>
+                </div>
+                <div class="history-actions">
+                  <button class="btn">Оставить отзыв</button>
+                  <button class="btn">Записаться снова</button>
+                </div>
+              </div>
+              <!-- Другие посещения -->
+            </div>
+          </div>
+
+          <div class="tab-pane" id="favorites">
+            <h2>Избранные услуги</h2>
+            <div class="favorites-grid">
+              <div class="favorite-item">
+                <img src="#" alt="Комплексный уход за лицом" />
+                <h3>Комплексный уход за лицом</h3>
+                <p>2500 руб.</p>
+                <div class="favorite-actions">
+                  <button class="btn">Записаться</button>
+                  <button class="remove-favorite">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Другие избранные -->
+            </div>
+          </div>
+
+          <div class="tab-pane" id="settings">
+            <h2>Настройки аккаунта</h2>
+            <form class="settings-form">
+              <div class="form-group">
+                <label for="notifications">Уведомления</label>
+                <div class="checkbox-group">
+                  <label>
+                    <input type="checkbox" id="email-notifications" checked />
+                    Email-уведомления
+                  </label>
+                  <label>
+                    <input type="checkbox" id="sms-notifications" />
+                    SMS-уведомления
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password-change">Сменить пароль</label>
+                <input
+                  type="password"
+                  id="current-password"
+                  placeholder="Текущий пароль"
+                />
+                <input
+                  type="password"
+                  id="new-password"
+                  placeholder="Новый пароль"
+                />
+                <input
+                  type="password"
+                  id="confirm-password"
+                  placeholder="Подтвердите пароль"
+                />
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">Сохранить настройки</button>
+              </div>
+            </form>
+
+            <div class="account-delete">
+              <h3>Удаление аккаунта</h3>
+              <p>
+                Удаление аккаунта приведет к потере всех данных и истории
+                посещений.
+              </p>
+              <button class="btn delete-account-btn">Удалить аккаунт</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3>BeautyGlow</h3>
+            <p>Салон косметических услуг премиум-класса в вашем городе.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красоты, 15
+            </p>
+            <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+            <p><i class="fas fa-envelope"></i> info@beautyglow.ru</p>
+          </div>
+          <div class="footer-column">
+            <h3>Часы работы</h3>
+            <p>Пн-Пт: 9:00 - 21:00</p>
+            <p>Сб-Вс: 10:00 - 20:00</p>
+          </div>
+          <div class="footer-column">
+            <h3>Подписка</h3>
+            <form class="subscribe-form">
+              <input type="email" placeholder="Ваш email" />
+              <button type="submit" class="btn">Подписаться</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 BeautyGlow. Все права защищены.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
