@@ -57,6 +57,9 @@ nav.desktop-nav ul li a:hover,
 .cart-icon{
     color: #7c7c7c;
 }
+.burger-menu-dark span{
+    background: #858585;
+}
 
 .search-box input,
 .filter select, 

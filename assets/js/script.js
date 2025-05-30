@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const productId = this.getAttribute("data-id");
       const productCard = this.closest(".service-card") || this.closest(".product-details");
       const productName = productCard.querySelector("h3")?.textContent ||
-                          productCard.querySelector("h1")?.textContent;
+        productCard.querySelector("h1")?.textContent;
       const productPrice = parseInt(productCard.querySelector(".price")?.textContent || 0);
       const productImage = productCard.querySelector("img")?.src;
 
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (firstSummary) {
       firstSummary.textContent = `${totalPrice} руб.`;
     }
-    
+
     const totalSummary = document.querySelector(".summary-row.total span:last-child");
     if (totalSummary) {
       totalSummary.textContent = `${totalPrice - 500} руб.`;
@@ -429,11 +429,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+if (document.getElementById("category-filter")) {
   document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".service-card");
     const searchInput = document.getElementById("service-search");
     const categoryFilter = document.getElementById("category-filter");
     const priceSort = document.getElementById("price-sort");
+    // -----------------------------------------------------------
 
     function filterAndSortServices() {
       // Получаем значения фильтров
@@ -484,12 +486,204 @@ document.addEventListener("DOMContentLoaded", function () {
         grid.appendChild(card.cloneNode(true));
       });
     }
+    // ---------------------------------------------------------------------------------------------
 
     // Обработчики событий
-    searchInput.addEventListener("input", filterAndSortServices);
-    categoryFilter.addEventListener("change", filterAndSortServices);
-    priceSort.addEventListener("change", filterAndSortServices);
+    searchInput?.addEventListener("input", filterAndSortServices);
+    categoryFilter?.addEventListener("change", filterAndSortServices);
+    priceSort?.addEventListener("change", filterAndSortServices);
 
     // Вызываем функцию при загрузке страницы
     filterAndSortServices();
   });
+}
+
+if (document.getElementById('add-service-btn')) {
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Пример данных (в реальном приложении эти данные будут загружаться с сервера)
+    let services = [
+      {
+        id: 1,
+        name: "Комплексный уход за лицом",
+        category: "face",
+        price: 3500,
+        duration: 90,
+        description: "Полный комплекс процедур по уходу за кожей лица, включая чистку, массаж и маску.",
+        image: "../media/card_img.jpeg"
+      },
+      {
+        id: 2,
+        name: "Антицеллюлитный массаж",
+        category: "massage",
+        price: 2500,
+        duration: 60,
+        description: "Специальный массаж, направленный на борьбу с целлюлитом и улучшение состояния кожи.",
+        image: "../media/card2.webp"
+      },
+      {
+        id: 3,
+        name: "Комплексный маникюр",
+        category: "nails",
+        price: 1800,
+        duration: 60,
+        description: "Уход за ногтями и кожей рук, включая обработку ногтей, кутикулы и покрытие.",
+        image: "../media/card3.webp"
+      },
+      {
+        id: 4,
+        name: "Восковая депиляция ног",
+        category: "hair-removal",
+        price: 2000,
+        duration: 45,
+        description: "Удаление волос с ног с использованием воска для длительного результата.",
+        image: "../media/card4.webp"
+      }
+    ];
+
+    // Элементы DOM
+    const servicesList = document.getElementById('services-list');
+    const addServiceBtn = document.getElementById('add-service-btn');
+    const serviceModal = document.getElementById('service-modal');
+    const confirmModal = document.getElementById('confirm-modal');
+    const closeModalBtns = document.querySelectorAll('.close-modal, .cancel-btn');
+    const serviceForm = document.getElementById('service-form');
+    const modalTitle = document.getElementById('modal-title');
+    const submitBtn = document.getElementById('submit-btn');
+    const confirmDeleteBtn = document.getElementById('confirm-delete');
+    const serviceImageInput = document.getElementById('service-image');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const pageInfo = document.getElementById('page-info');
+    const serviceSearch = document.getElementById('service-search');
+
+    // Переменные состояния
+    let currentPage = 1;
+    const itemsPerPage = 5;
+    let currentServiceId = null;
+    let isEditing = false;
+
+    // Инициализация
+    renderServices();
+
+    // Открытие модального окна для добавления услуги
+    addServiceBtn.addEventListener('click', () => {
+      isEditing = false;
+      modalTitle.textContent = 'Добавить новую услугу';
+      submitBtn.textContent = 'Добавить';
+      serviceForm.reset();
+      imagePreviewContainer.style.display = 'none';
+      serviceModal.style.display = 'blok';
+    });
+
+
+    // Закрытие при клике вне модального окна
+    window.addEventListener('click', (e) => {
+      if (e.target === serviceModal) {
+        serviceModal.style.display = 'none';
+      }
+      if (e.target === confirmModal) {
+        confirmModal.style.display = 'none';
+      }
+    });
+
+
+
+    // Функция для отображения услуг
+    function renderServices(filteredServices = services) {
+      servicesList.innerHTML = '';
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const paginatedServices = filteredServices.slice(startIndex, endIndex);
+
+      if (paginatedServices.length === 0) {
+        servicesList.innerHTML = '<tr><td colspan="7" style="text-align: center;">Услуги не найдены</td></tr>';
+        return;
+      }
+
+      paginatedServices.forEach(service => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+              <td>${service.id}</td>
+              <td><img src="${service.image}" class="service-image-preview" alt="${service.name}"></td>
+              <td>${service.name}</td>
+              <td>${getCategoryName(service.category)}</td>
+              <td>${service.price} руб.</td>
+              <td>${service.duration} мин.</td>
+              <td>
+                  <button class="action-btn edit-btn" data-id="${service.id}">
+                      <i class="fas fa-edit"></i> Изменить
+                  </button>
+                  <button class="action-btn delete-btn" data-id="${service.id}">
+                      <i class="fas fa-trash"></i> Удалить
+                  </button>
+              </td>
+          `;
+
+        servicesList.appendChild(row);
+      });
+
+
+    }
+
+    // Редактирование услуги
+    function editService(id) {
+      const service = services.find(s => s.id === id);
+      if (service) {
+        isEditing = true;
+        currentServiceId = id;
+        modalTitle.textContent = 'Редактировать услугу';
+        submitBtn.textContent = 'Сохранить';
+
+        document.getElementById('service-id').value = service.id;
+        document.getElementById('service-name').value = service.name;
+        document.getElementById('service-category').value = service.category;
+        document.getElementById('service-price').value = service.price;
+        document.getElementById('service-duration').value = service.duration;
+        document.getElementById('service-description').value = service.description;
+
+        if (service.image) {
+          imagePreview.src = service.image;
+          imagePreviewContainer.style.display = 'block';
+        } else {
+          imagePreviewContainer.style.display = 'none';
+        }
+
+        serviceModal.style.display = 'block';
+      }
+    }
+
+    // Поиск услуг
+    serviceSearch.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      if (searchTerm) {
+        const filtered = services.filter(service =>
+          service.name.toLowerCase().includes(searchTerm) ||
+          getCategoryName(service.category).toLowerCase().includes(searchTerm) ||
+          service.description.toLowerCase().includes(searchTerm)
+        );
+        renderServices(filtered);
+      } else {
+        renderServices();
+      }
+    });
+
+    // Вспомогательная функция для получения названия категории
+    function getCategoryName(category) {
+      const categories = {
+        'face': 'Уход за лицом',
+        'massage': 'Массажи',
+        'nails': 'Маникюр/Педикюр',
+        'hair-removal': 'Депиляция',
+        'body': 'Уход за телом',
+        'hair': 'Уход за волосами'
+      };
+      return categories[category] || category;
+    }
+  });
+}

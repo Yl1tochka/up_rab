@@ -114,11 +114,11 @@
             <form class="profile-form">
               <div class="form-row">
                 <div class="form-group">
-                  <label for="first-name">Имя</label>
+                  <label   for="first-name">Имя</label>
                   <input type="text" id="first-name" value="Анна" />
                 </div>
                 <div class="form-group">
-                  <label for="last-name">Фамилия</label>
+                  <label  for="last-name">Фамилия</label>
                   <input type="text" id="last-name" value="Иванова" />
                 </div>
               </div>
@@ -142,12 +142,12 @@
               <div class="form-group">
                 <label>Пол</label>
                 <div class="radio-group">
-                  <label>
-                    <input type="radio" name="gender" value="female" checked />
+                  <label for="radio1">
+                    <input type="radio" id="radio1" name="radio1" value="female" checked />
                     Женский
                   </label>
-                  <label>
-                    <input type="radio" name="gender" value="male" /> Мужской
+                  <label for="radio2">
+                    <input type="radio" id="radio2" name="radio2" value="male" /> Мужской
                   </label>
                 </div>
               </div>
@@ -201,7 +201,7 @@
             <h2>Избранные услуги</h2>
             <div class="favorites-grid">
               <div class="favorite-item">
-                <img src="#" alt="Комплексный уход за лицом" />
+                <img src="../media/card_img.jpeg" alt="Комплексный уход за лицом" />
                 <h3>Комплексный уход за лицом</h3>
                 <p>2500 руб.</p>
                 <div class="favorite-actions">
@@ -219,7 +219,7 @@
             <h2>Настройки аккаунта</h2>
             <form class="settings-form">
               <div class="form-group">
-                <label for="notifications">Уведомления</label>
+                <label>Уведомления</label>
                 <div class="checkbox-group">
                   <label>
                     <input type="checkbox" id="email-notifications" checked />
@@ -233,7 +233,7 @@
               </div>
 
               <div class="form-group">
-                <label for="password-change">Сменить пароль</label>
+                <label>Сменить пароль</label>
                 <input
                   type="password"
                   id="current-password"
